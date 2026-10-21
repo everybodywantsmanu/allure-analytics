@@ -1,0 +1,13 @@
+# The first version of the monitor, kept locally only: it carries another
+# company's brand and is replaced by Allure Analytics.
+performance-monitor.html
+
+# Local tooling
+.claude/
+.tmp-test/
+node_modules/
+
+# System files
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Allure Analytics — the pace of your pages</title>
+  <meta name="description" content="Allure Analytics tells product and marketing teams where their site stands on speed against competitors, and which quick wins move them up.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" type="image/svg+xml" href="assets/allure-analytics-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Inter stands in for SF Pro on non-Apple systems. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Apply the saved theme before first paint to avoid a flash.
+    try { var t = JSON.parse(localStorage.getItem('allure:theme')); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <script type="module" src="src/app.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="tooltip" class="tooltip" role="status" aria-live="polite" hidden></div>
+  <noscript><p class="noscript">Allure Analytics needs JavaScript. · Allure Analytics nécessite JavaScript.</p></noscript>
+</body>
+</html>
