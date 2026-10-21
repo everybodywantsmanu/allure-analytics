@@ -51,7 +51,7 @@ To measure your own site (as a whole, or 1 to 8 key pages, against up to 8 compe
 | **PageSpeed Insights API** (required) | The lab: score, standings, curve, quick wins, page-by-page lab in Compare, plus a copy of real-visitor data without history | No analysis (PageSpeed grants no quota without a key) |
 | **Chrome UX Report API** (recommended) | Real visitors from the source: current values, share of good visits, and 6 months of weekly history in Compare | The analysis still runs; real visitors come from PageSpeed, without history |
 
-As soon as the key is pasted, Allure checks it with one light request per API (nothing is measured) and lights one status per API; an API that is not switched on links straight to its page in the Google Cloud console. No key yet? A four-step guide sits folded under the field, each step linking to the right page of the console.
+As soon as the key is pasted, Allure checks it with one light request per API (nothing is measured) and lights one status per API; an API that is not switched on links straight to its page in the Google Cloud console. No key yet? A tip under the field opens a four-step guide, each step linking to the right page of the console; it goes away once the key works.
 
 ## Privacy
 

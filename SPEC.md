@@ -171,7 +171,7 @@ Puis « Voir d'où viennent les points › » vers l'onglet Score de Comparer. �
 **Réglages** (page) *(révisés le 17/10/2026)*. Tout ce qu'on règle une fois. Avant la première analyse, la page s'intitule « Analyser mon site » : c'est la porte d'entrée.
 - **Votre site** : l'adresse, et le nom, **déduit du domaine** (« www.maison-lune.fr » → « Maison Lune ») tant qu'on ne le change pas. Puis **ce qu'on compare** : *Site entier* (le score PageSpeed de l'accueil et les vrais visiteurs de tout le domaine ; PageSpeed ne mesure qu'une page à la fois) ou *Pages choisies* (1 à 8 pages clés : nom, chemin ou adresse complète, importance proposée d'après le nom et changée d'un clic).
 - **Concurrents** (8 au plus) : le domaine et le nom, déduit aussi. Si vous comparez vos pages, chacun a sa bascule : *Site entier* (comparé sur son accueil) ou *Pages choisies* (ses pages équivalentes ; l'accueil compte d'office).
-- **Clé Google** *(cadrée le 21/10/2026, revue le 22/10/2026)* : en dernier dans le paramétrage (on commence par ce qui intéresse ; le brouillon est gardé si l'on part dans la console). **Le champ « Clé API » passe en premier** : on sait ce qu'est une clé API ; le guide est une action secondaire, replié sous le champ, en petit et en gris (« Pas encore de clé ? Les 4 étapes pour en créer une »).
+- **Clé Google** *(cadrée le 21/10/2026, revue le 22/10/2026)* : en dernier dans le paramétrage (on commence par ce qui intéresse ; le brouillon est gardé si l'on part dans la console). **Le champ « Clé API » passe en premier** : on sait ce qu'est une clé API ; le guide reste secondaire mais se présente comme un **conseil** *(22/10/2026)* : un encart sur fond gris clair, sous le champ, avec une petite ampoule, « **Pas encore de clé ?** Elle est gratuite et se crée en cinq minutes, avec votre compte Google. » et un bouton « Voir les 4 étapes › » qui déplie le guide dans l'encart. L'encart disparaît dès que la clé fonctionne.
   - **Une seule clé, deux API.** C'est une clé API Google Cloud, gratuite. Sur cette clé, on active deux API, et chacune débloque quelque chose :
     - **PageSpeed Insights API**, *obligatoire* : le score, le classement, la courbe, les quick wins, le labo page par page, et une copie des vrais visiteurs sans historique.
     - **Chrome UX Report API**, *recommandée* : les vrais visiteurs à la source (valeurs et part de visites bonnes, plus souvent disponibles à l'échelle du site) et **6 mois d'historique** dans Comparer. Facultative : sans elle, l'analyse tourne quand même.
@@ -183,7 +183,7 @@ Puis « Voir d'où viennent les points › » vers l'onglet Score de Comparer. �
 
 | Cas | Comportement |
 |---|---|
-| Pas encore de clé | Le champ, et sous lui le guide replié ; pas de voyant. |
+| Pas encore de clé | Le champ, et sous lui l'encart conseil, replié ; pas de voyant. |
 | Clé mal formée | Pas d'appel à Google ; sous le champ : « Une clé Google commence par AIza et compte 39 caractères. » |
 | Vérification en cours | « Vérification de la clé… » ; le reste du formulaire reste utilisable. |
 | Clé modifiée | Nouvelle vérification après une courte pause de frappe ; la précédente est abandonnée. |
@@ -193,7 +193,7 @@ Puis « Voir d'où viennent les points › » vers l'onglet Score de Comparer. �
 | Quota du jour atteint | « Quota du jour atteint pour cette clé : réessayez demain. » Lancement bloqué. |
 | Hors ligne, Google injoignable, réponse inattendue | « Vérification impossible pour l'instant » et « Réessayer » ; le lancement reste possible, l'analyse dira si ça bloque. |
 | Retour depuis la console | En revenant sur l'onglet, une clé incomplète est revérifiée d'elle-même. |
-| Tout est bon | « Clé valide » et les deux voyants ; le guide reste replié, ses étapes cochées si on l'ouvre. |
+| Tout est bon | « Clé valide » et les deux voyants ; l'encart conseil disparaît (il revient si la clé change). |
 | Réglages rouverts avec une clé enregistrée | Vérifiée une fois par visite ; le résultat est gardé tant que la clé ne change pas. |
 | Coût | Deux requêtes légères par vérification ; rien n'est mesuré. |
 - **L'estimation** et le lancement : « 14 mesures · 1 à 3 min » (la fourchette tient compte des pages mesurées trois fois), puis « Lancer l'analyse ».

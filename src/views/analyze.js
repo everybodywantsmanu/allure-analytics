@@ -154,8 +154,9 @@ function formInner() {
 // One key, two APIs: PageSpeed Insights (required) and Chrome UX Report
 // (recommended). People know what an API key is: the field leads, its lights
 // say which API answers, and an API that doesn't carries its own "Enable ↗".
-// The four-step guide to create a key is secondary: folded under the field,
-// small and grey; its steps tick themselves once the check sees them done.
+// The four-step guide to create a key comes as a tip under the field ("No key
+// yet?"), folded until asked for, gone once the key works; its steps tick
+// themselves once the check sees them done.
 // The check (api.js, checkKey) measures nothing. The card is drawn once;
 // ticks, lights and messages change in place, so the field keeps your cursor.
 
@@ -198,6 +199,9 @@ function keyBlock() {
   return null;
 }
 
+const keyWorks = v => v.psi === 'ok' && v.crux === 'ok';
+const BULB = '<svg viewBox="0 0 24 24"><path d="M9.5 18h5M10.5 21h3M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.1V16h5v-.1c0-.8.4-1.6 1.1-2.1A6 6 0 0 0 12 3Z"/></svg>';
+
 // One light per API; one that doesn't answer links straight to where it is switched on.
 const goLink = (href, label) => `<a class="key-go" href="${href}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`;
 const light = (api, v) => `<span class="key-light${v === 'ok' ? ' is-on' : ''}"><i aria-hidden="true"></i>${esc(t(`key.api.${api}`))} · ${esc(t(v === 'ok' ? 'key.on' : 'key.off'))}${v === 'off' ? ` · ${goLink(CONSOLE[api], t('key.go.enable'))}` : ''}</span>`;
@@ -229,19 +233,24 @@ function keyCard() {
         ${errSlot('key')}</label>
       <div class="key-status" data-key-status aria-live="polite">${keyStatusHtml(v)}</div>
       <p class="hint">${esc(t('setup.key.local'))}</p>
-      <details class="key-guide" data-key-guide${guideOpen ? ' open' : ''}>
-        <summary>${esc(t('key.guide'))}</summary>
+      <details class="key-guide" data-key-guide${guideOpen ? ' open' : ''}${keyWorks(v) ? ' hidden' : ''}>
+        <summary>
+          <span class="key-tip-ico" aria-hidden="true">${BULB}</span>
+          <span class="key-tip-text"><b>${esc(t('key.tip.title'))}</b>${esc(t('key.tip.text'))}</span>
+          <span class="key-tip-go"><span class="when-closed">${esc(t('key.tip.open'))}</span><span class="when-open">${esc(t('key.tip.hide'))}</span></span>
+        </summary>
         <p class="key-lead">${esc(t('key.lead'))}</p>
         <ol class="key-steps">${steps}</ol>
       </details>
     </section>`;
 }
 
-// Ticks, lights and messages, in place.
+// Ticks, lights and messages, in place; the tip goes once the key works.
 function refreshKey() {
   const card = form()?.querySelector('[data-keycard]');
   if (!card) return;
   const v = keyView();
+  card.querySelector('[data-key-guide]').hidden = keyWorks(v);
   for (const li of card.querySelectorAll('[data-step]')) {
     const id = li.dataset.step;
     li.classList.toggle('is-done', v.done[id]);

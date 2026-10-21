@@ -595,14 +595,22 @@ a.lab-val:hover { text-decoration-style: solid; text-decoration-color: var(--ink
 /* A link to the console: quiet, dotted, solid on hover. */
 .key-go { color: var(--ink); white-space: nowrap; text-decoration: underline dotted; text-decoration-color: var(--ink-3); text-underline-offset: 3px; transition: text-decoration-color .2s var(--ease); }
 .key-go:hover { text-decoration-style: solid; text-decoration-color: var(--ink); }
-/* The guide: folded, small, grey. */
-.key-guide { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); font-size: var(--fs-small); color: var(--ink-2); }
-.key-guide summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none; }
+/* The guide, as a tip: a soft panel under the field, folded until asked for. */
+.key-guide { margin-top: 18px; padding: 14px 16px; border-radius: 16px; background: var(--fill); font-size: var(--fs-small); color: var(--ink-2); }
+.key-guide[hidden] { display: none; }
+.key-guide summary { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 12px; align-items: center; cursor: pointer; list-style: none; }
 .key-guide summary::-webkit-details-marker { display: none; }
-.key-guide summary::before { content: "›"; display: inline-block; color: var(--ink-3); transition: transform .25s var(--ease); }
-.key-guide[open] summary::before { transform: rotate(90deg); }
-.key-guide summary:hover { color: var(--ink); }
-.key-lead { margin-top: 10px; max-width: 64ch; }
+.key-tip-ico { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: var(--card); }
+.key-tip-ico svg { width: 17px; height: 17px; fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.key-tip-text b { display: block; color: var(--ink); font-size: var(--fs-body); font-weight: var(--fw-strong); }
+.key-tip-go { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: var(--card); color: var(--ink); font-weight: var(--fw-strong); white-space: nowrap; transition: box-shadow .2s var(--ease); }
+.key-tip-go::after { content: "›"; display: inline-block; transition: transform .25s var(--ease); }
+.key-guide[open] .key-tip-go::after { transform: rotate(90deg); }
+.key-guide summary:hover .key-tip-go { box-shadow: inset 0 0 0 1px var(--ink-3); }
+.key-tip-go .when-open, .key-guide[open] .key-tip-go .when-closed { display: none; }
+.key-guide[open] .key-tip-go .when-open { display: inline; }
+.key-lead { margin-top: 14px; padding-left: 44px; max-width: 64ch; }
+.key-guide .key-steps { padding-left: 44px; }
 .key-steps { display: grid; gap: 10px; margin: 12px 0 0; padding: 0; list-style: none; }
 .key-step { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; gap: 10px; align-items: baseline; }
 .key-num { position: relative; font-variant-numeric: tabular-nums; color: var(--ink-3); text-align: center; }
@@ -712,6 +720,9 @@ a.lab-val:hover { text-decoration-style: solid; text-decoration-color: var(--ink
   .tiles { padding-left: 10px; }
   .gauge-card { padding: 22px 18px 14px; }
   .qwb { gap: 12px; grid-template-columns: auto minmax(64px, 1fr) minmax(0, auto); }
+  .key-guide summary { grid-template-columns: 32px minmax(0, 1fr); }
+  .key-tip-go { grid-column: 2; justify-self: start; }
+  .key-lead, .key-guide .key-steps { padding-left: 0; }
   .start-line { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
 
