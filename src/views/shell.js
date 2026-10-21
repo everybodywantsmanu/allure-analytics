@@ -12,6 +12,7 @@ import { storage } from '../storage.js';
 import { PSI_TARGET } from '../metrics.js';
 
 const AUTHOR_URL = 'https://fr.linkedin.com/in/emmanuel-nsuele';
+const REPO_URL = 'https://github.com/emmanuelnsuele-dot/allure-analytics';
 
 export function segmented(action, options, current, label, extra = '') {
   return `<div class="segmented ${extra}" role="group" aria-label="${esc(label)}">${options.map(([value, text]) =>
@@ -95,7 +96,7 @@ export function renderShell({ data, cta = 'analyze', body, realName = null, demo
   ${body}
   <footer class="foot">
     <div class="wrap">
-      <span>Allure Analytics · ${esc(t('colophon.version'))}</span>
+      <span>Allure Analytics · ${esc(t('colophon.version'))} · <a class="foot-link" href="${REPO_URL}" target="_blank" rel="noopener noreferrer">${esc(t('colophon.source'))}<span class="ext" aria-hidden="true">↗</span></a></span>
       <span class="spacer"></span>
       <span class="signature">${esc(t('colophon.by'))} <a href="${AUTHOR_URL}" target="_blank" rel="noopener noreferrer" aria-label="${esc(t('colophon.author'))}">Emmanuel Nsuele<span class="ext" aria-hidden="true">↗</span></a></span>
     </div>

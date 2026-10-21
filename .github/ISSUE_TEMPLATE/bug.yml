@@ -1,0 +1,33 @@
+name: Bug
+description: Something doesn't work as expected
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, what happened instead. Never paste your Google API key.
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where?
+      options: [Home, Compare, Settings / Google key, Analysis in progress, Somewhere else]
+    validations:
+      required: true
+  - type: dropdown
+    id: data
+    attributes:
+      label: With which data?
+      options: [The demo, My own analysis]
+  - type: input
+    id: device
+    attributes:
+      label: Device and browser
+      placeholder: e.g. iPhone 15, Safari / MacBook, Chrome 130
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot (optional)
+      description: Drag an image here.

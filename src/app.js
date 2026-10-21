@@ -1,5 +1,6 @@
 // Entry point: state, routing and the few controls.
 // Routes: #/ · #/compare/:tab · #/page/:id · #/fix/:id · #/analyze · #/settings
+// Shareable: #/demo, or #/demo/<route> (e.g. #/demo/compare/lcp), opens the demo there.
 
 import { storage } from './storage.js';
 import { t, setLang, getLang, pick, auditTitle } from './i18n.js';
@@ -95,9 +96,20 @@ function viewFor({ view, id }) {
 // again in one click, or set up a first analysis.
 const cta = () => (isRunning() ? 'running' : loadResults() && canRerun() ? 'rerun' : 'analyze');
 
+// A link into the demo, for a post or a README: switch to it, then show the
+// screen asked for (the home by default), without keeping the link in history.
+function openDemoLink() {
+  const link = location.hash.match(/^#\/?demo(?:\/(.*))?$/);
+  if (!link) return;
+  setMode('demo');
+  state.data = loadData();
+  history.replaceState(null, '', `${location.pathname}${location.search}#/${link[1] ?? ''}`);
+}
+
 // anim: 'all' on navigation, 'charts' when the device changes (lines redraw),
 // 'none' for language and theme so the page doesn't replay its entrance.
 function render({ keepScroll = false, anim = 'all' } = {}) {
+  openDemoLink();
   const y = window.scrollY;
   resetCharts();
   document.documentElement.lang = getLang();

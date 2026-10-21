@@ -1,0 +1,42 @@
+<!doctype html>
+<!-- The 1280×640 card shown when the repo or the demo is shared (GitHub social
+     preview, Open Graph). Rendered to assets/social-preview.png with headless
+     Chrome, the app served locally:
+     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
+       --hide-scrollbars --window-size=1280,640 --virtual-time-budget=3000 \
+       --screenshot=assets/social-preview.png http://localhost:4173/tools/social-preview.html
+     (or simply: sh tools/screenshots.sh) -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Allure Analytics · social preview</title>
+<style>
+  html, body { margin: 0; }
+  body {
+    width: 1280px; height: 640px; overflow: hidden; position: relative;
+    background: #F5F5F7; color: #1D1D1F;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .text { position: absolute; left: 80px; top: 88px; width: 560px; }
+  .logo { width: 300px; display: block; }
+  h1 { margin: 64px 0 0; font-size: 54px; line-height: 1.04; font-weight: 600; letter-spacing: -.045em; }
+  h1 span { color: #6E6E73; }
+  p { margin: 28px 0 0; font-size: 22px; line-height: 1.4; color: #6E6E73; letter-spacing: -.01em; }
+  .shot {
+    position: absolute; left: 700px; top: 96px; width: 760px; border-radius: 24px; overflow: hidden;
+    box-shadow: 0 1px 1px rgb(0 0 0 / .04), 0 40px 80px -30px rgb(0 0 0 / .35), 0 0 0 1px rgb(0 0 0 / .05);
+    background: #fff;
+  }
+  .shot img { display: block; width: 100%; }
+</style>
+</head>
+<body>
+  <div class="text">
+    <img class="logo" src="../assets/allure-analytics-logo.svg" alt="Allure Analytics">
+    <h1>Your site’s speed against your competitors. <span>And the quick wins that move you up.</span></h1>
+    <p>Measured by Google · free · open source</p>
+  </div>
+  <div class="shot"><img src="../assets/screenshots/home.png" alt=""></div>
+</body>
+</html>

@@ -16,7 +16,11 @@ const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 
 let lang = initialLang();
 
+// A link may ask for a language (?lang=en, ?lang=fr), e.g. to share the demo in
+// English; then your choice in Settings; then the browser's.
 function initialLang() {
+  const asked = typeof location !== 'undefined' ? new URLSearchParams(location.search).get('lang') : null;
+  if (asked === 'fr' || asked === 'en') return asked;
   const saved = storage.get('lang');
   if (saved === 'fr' || saved === 'en') return saved;
   return (navigator.language || 'en').toLowerCase().startsWith('fr') ? 'fr' : 'en';
@@ -244,6 +248,7 @@ const DICT = {
     'settings.reset.confirm': 'Effacer le projet, les mesures, l’historique et la clé enregistrés dans ce navigateur ?',
 
     'colophon.version': 'v0.1',
+    'colophon.source': 'Code source',
     'demo.band': 'Démo · données fictives',
     'demo.exit': 'Quitter la démo',
     'welcome.title': 'Votre site face à vos concurrents.',
@@ -560,6 +565,7 @@ const DICT = {
     'settings.reset.confirm': 'Delete the project, measurements, history and key saved in this browser?',
 
     'colophon.version': 'v0.1',
+    'colophon.source': 'Source code',
     'demo.band': 'Demo · fictional data',
     'demo.exit': 'Leave the demo',
     'welcome.title': 'Your site against your competitors.',

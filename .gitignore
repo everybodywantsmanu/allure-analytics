@@ -2,6 +2,9 @@
 # company's brand and is replaced by Allure Analytics.
 performance-monitor.html
 
+# Your personal publishing to-do list (travels with the folder, never published)
+PUBLISHING.md
+
 # Local tooling
 .claude/
 .tmp-test/

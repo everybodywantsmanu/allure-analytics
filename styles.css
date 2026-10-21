@@ -485,6 +485,9 @@ a.lab-val:hover { text-decoration-style: solid; text-decoration-color: var(--ink
 .welcome-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 32px; }
 .welcome .hint { margin-top: 20px; }
 /* The author's signature: quiet, the name a touch stronger, LinkedIn on click. */
+.foot-link { color: var(--ink-2); text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; transition: color .2s var(--ease), text-decoration-color .2s var(--ease); }
+.foot-link:hover { color: var(--ink); text-decoration-color: var(--ink-3); }
+.foot-link .ext { margin-left: 2px; }
 .signature a { color: var(--ink); font-weight: var(--fw-strong); text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; transition: text-decoration-color .2s var(--ease); }
 .signature a:hover { text-decoration-color: var(--ink-3); }
 .signature .ext { display: inline-block; margin-left: 3px; font-weight: var(--fw-regular); color: var(--ink-2); transition: transform .2s var(--ease); }

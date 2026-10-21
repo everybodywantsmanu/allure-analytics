@@ -61,6 +61,7 @@ Un projet fictif déjà rempli : une boutique fictive, 5 pages, environ 6 mois d
 - **Dans la barre du haut, toujours la bascule *Mon site | Démo*** (« Mon site » devient le nom de votre entreprise après une analyse) : la démo se choisit d'un clic, de n'importe où.
 - **En démo, « Quitter la démo › »** dans la bande du haut ramène à l'appli claire : l'accueil vierge, ou vos résultats.
 - Le choix est mémorisé ; une analyse terminée bascule toujours sur vos données.
+- **Liens à partager** *(21/10/2026)* : `#/demo` ouvre directement la démo, `#/demo/compare/lcp` l'ouvre sur un écran donné ; `?lang=en` ou `?lang=fr` choisit la langue (par exemple pour envoyer la démo en anglais). Le lien ne reste pas dans l'historique : l'adresse redevient celle de l'écran.
 
 | Cas | Comportement |
 |---|---|
@@ -130,7 +131,7 @@ Puis « Voir d'où viennent les points › » vers l'onglet Score de Comparer. �
 - **Couleur** : l'orange ne marque que **vos** valeurs sous le seuil (le chiffre, jamais la barre) ; une tuile dit aussi le seuil qu'elle dépasse. Plus de ▲ : il avait la forme du ▲ « place gagnée » et se lisait comme une hausse *(revue UX du 18/10/2026)*. Les triangles ne servent plus qu'aux mouvements (▲ gagné, ▼ perdu). Les concurrents restent toujours en gris. Les erreurs de saisie restent neutres. Texte orange plus foncé de jour (#A35F00, contraste 5:1).
 - **Typographie** : 5 tailles (titre principal, 24, 15, 13 et 11 px) et 2 graisses (normal, demi-gras).
 - **Barre du haut** : le logo Allure Analytics (« A. » sur téléphone), la bascule *Mon site | Démo* (votre entreprise par son nom dès la première analyse ; sur téléphone, le nom raccourcit, « Démo » reste entier), Réglages et **une seule action**, selon le moment : « Analyser mon site » (démo ou projet incomplet, vers le paramétrage), « Relancer l'analyse » (un clic, même projet), « Analyse en cours… » (retour à l'avancement). Elle tient sur une ligne, téléphone compris.
-- **Pied de page** *(18/10/2026)* : « Allure Analytics · v0.1 » à gauche, et à droite la signature « Imaginé et créé par **Emmanuel Nsuele** ↗ » (le nom mène à son LinkedIn, dans un nouvel onglet), en gris discret. Rien d'autre : plus de « prototype », plus de « Méthode », et la mention démo est passée dans la bande du haut.
+- **Pied de page** *(18/10/2026)* : « Allure Analytics · v0.1 · Code source ↗ » à gauche (le lien mène au dépôt GitHub), et à droite la signature « Imaginé et créé par **Emmanuel Nsuele** ↗ » (le nom mène à son LinkedIn, dans un nouvel onglet), en gris discret. Rien d'autre : plus de « prototype », plus de « Méthode », et la mention démo est passée dans la bande du haut.
 - **Mesure de l'audit** : on passe de 384 à environ 155 mots, de 16 à 5 tailles de texte, de 27 tuiles à aucune tuile visible, et de 8 à 4 contrôles dans la barre.
 
 **Comparer** (page, `#/compare/score` · `/lcp` · `/inp` · `/cls`) *(cadré le 17/10/2026)*. Pour comparer en profondeur votre entreprise et vos concurrents, indicateur par indicateur, avec tout ce que Google fournit d'utile.

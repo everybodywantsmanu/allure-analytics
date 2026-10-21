@@ -1,0 +1,16 @@
+name: Idea
+description: Suggest an improvement or a new feature
+labels: [idea]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What would you like to do that you can't today?
+      description: The need first, then, if you have one, the solution you imagine.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why does it matter to you?
+      description: Your role (product, marketing, developer…) and the decision it would help you make.
