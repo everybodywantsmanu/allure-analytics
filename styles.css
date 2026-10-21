@@ -579,43 +579,39 @@ a.lab-val:hover { text-decoration-style: solid; text-decoration-color: var(--ink
 .equiv-row .input { height: 36px; font-size: var(--fs-small); }
 .equiv-row .ferr { grid-column: 2; }
 
-/* The Google key: four steps that tick themselves, then one line. */
-.key-steps { display: grid; gap: 2px; margin: 18px 0 0; padding: 0; list-style: none; }
-.key-step { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 14px; margin: 0 -12px; padding: 12px; border-radius: 14px; transition: background-color .3s var(--ease); }
-/* The step that needs you now. */
-.key-step.is-todo { background: var(--fill); }
-.key-tick { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--ink-3); font-size: var(--fs-small); color: var(--ink-2); transition: background-color .3s var(--ease), box-shadow .3s var(--ease); }
-.key-tick b { font-weight: var(--fw-strong); }
-.key-step.is-done .key-tick { background: var(--ink); box-shadow: none; }
-.key-step.is-done .key-tick b { display: none; }
-.key-step.is-done .key-tick::after { content: ''; width: 5px; height: 10px; margin-top: -2px; border: solid var(--card); border-width: 0 2px 2px 0; transform: rotate(45deg); }
-.key-body { min-width: 0; }
-.key-head { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; min-height: 28px; }
-.key-title { font-weight: var(--fw-strong); }
-.key-tag { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border-radius: 999px; font-size: var(--fs-micro); font-weight: var(--fw-strong); }
-.key-tag--required { background: var(--ink); color: var(--card); }
-.key-tag--recommended { box-shadow: inset 0 0 0 1px var(--ink-3); color: var(--ink-2); }
-.key-go { margin-left: auto; padding: 5px 12px; border-radius: 999px; background: var(--fill); font-size: var(--fs-small); font-weight: var(--fw-strong); white-space: nowrap; transition: background-color .2s var(--ease); }
-.key-go:hover { background: var(--line); }
-.key-step.is-todo .key-go { background: var(--card); }
-.key-body > .hint { margin-top: 2px; }
-.key-field { margin-top: 12px; }
-.key-status { margin-top: 14px; font-size: var(--fs-small); color: var(--ink-2); }
+/* The Google key: the field leads; the guide to create one steps back. */
+.key-field { margin-top: 18px; }
+.key-status { margin-top: 12px; font-size: var(--fs-small); color: var(--ink-2); }
 .key-status:empty { display: none; }
 .key-status .link { font-size: inherit; }
 .key-lights { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px; }
 .key-lights b { color: var(--ink); font-weight: var(--fw-strong); }
-.key-light { display: inline-flex; align-items: center; gap: 7px; }
+.key-light { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0 7px; }
 .key-light i { width: 8px; height: 8px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--ink-3); }
 .key-light.is-on { color: var(--ink); }
 .key-light.is-on i { background: var(--ink); box-shadow: none; }
 .key-checking { display: inline-flex; align-items: center; gap: 8px; }
 .key-checking i { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); animation: pulse 1.2s var(--ease) infinite; }
-/* Folded: once the key works, only the field and its line remain. */
-.key-card.is-folded .key-lead, .key-card.is-folded .key-step:not([data-step='key']) { display: none; }
-.key-card.is-folded .key-step[data-step='key'] { display: block; margin: 16px 0 0; padding: 0; }
-.key-card.is-folded .key-step[data-step='key'] :is(.key-tick, .key-head, .key-body > .hint) { display: none; }
-.key-card.is-folded .key-field { margin-top: 0; }
+/* A link to the console: quiet, dotted, solid on hover. */
+.key-go { color: var(--ink); white-space: nowrap; text-decoration: underline dotted; text-decoration-color: var(--ink-3); text-underline-offset: 3px; transition: text-decoration-color .2s var(--ease); }
+.key-go:hover { text-decoration-style: solid; text-decoration-color: var(--ink); }
+/* The guide: folded, small, grey. */
+.key-guide { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); font-size: var(--fs-small); color: var(--ink-2); }
+.key-guide summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none; }
+.key-guide summary::-webkit-details-marker { display: none; }
+.key-guide summary::before { content: "›"; display: inline-block; color: var(--ink-3); transition: transform .25s var(--ease); }
+.key-guide[open] summary::before { transform: rotate(90deg); }
+.key-guide summary:hover { color: var(--ink); }
+.key-lead { margin-top: 10px; max-width: 64ch; }
+.key-steps { display: grid; gap: 10px; margin: 12px 0 0; padding: 0; list-style: none; }
+.key-step { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; gap: 10px; align-items: baseline; }
+.key-num { position: relative; font-variant-numeric: tabular-nums; color: var(--ink-3); text-align: center; }
+.key-step.is-done .key-num { color: transparent; }
+.key-step.is-done .key-num::after { content: "✓"; position: absolute; inset: 0; color: var(--ink-2); }
+.key-text { min-width: 0; color: var(--ink); }
+.key-step.is-todo .key-text { color: var(--ink); font-weight: var(--fw-strong); }
+.key-tag { color: var(--ink-2); font-weight: var(--fw-regular); }
+.key-hint { display: block; margin-top: 1px; color: var(--ink-2); font-weight: var(--fw-regular); }
 .key-wrap { position: relative; display: block; }
 .key-wrap .input { padding-right: 96px; }
 .text-btn {

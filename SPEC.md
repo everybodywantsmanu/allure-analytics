@@ -171,19 +171,19 @@ Puis « Voir d'où viennent les points › » vers l'onglet Score de Comparer. �
 **Réglages** (page) *(révisés le 17/10/2026)*. Tout ce qu'on règle une fois. Avant la première analyse, la page s'intitule « Analyser mon site » : c'est la porte d'entrée.
 - **Votre site** : l'adresse, et le nom, **déduit du domaine** (« www.maison-lune.fr » → « Maison Lune ») tant qu'on ne le change pas. Puis **ce qu'on compare** : *Site entier* (le score PageSpeed de l'accueil et les vrais visiteurs de tout le domaine ; PageSpeed ne mesure qu'une page à la fois) ou *Pages choisies* (1 à 8 pages clés : nom, chemin ou adresse complète, importance proposée d'après le nom et changée d'un clic).
 - **Concurrents** (8 au plus) : le domaine et le nom, déduit aussi. Si vous comparez vos pages, chacun a sa bascule : *Site entier* (comparé sur son accueil) ou *Pages choisies* (ses pages équivalentes ; l'accueil compte d'office).
-- **Clé Google** *(cadrée le 21/10/2026)* : un pas-à-pas dans la carte, en dernier dans le paramétrage (on commence par ce qui intéresse ; le brouillon est gardé si l'on part dans la console).
+- **Clé Google** *(cadrée le 21/10/2026, revue le 22/10/2026)* : en dernier dans le paramétrage (on commence par ce qui intéresse ; le brouillon est gardé si l'on part dans la console). **Le champ « Clé API » passe en premier** : on sait ce qu'est une clé API ; le guide est une action secondaire, replié sous le champ, en petit et en gris (« Pas encore de clé ? Les 4 étapes pour en créer une »).
   - **Une seule clé, deux API.** C'est une clé API Google Cloud, gratuite. Sur cette clé, on active deux API, et chacune débloque quelque chose :
     - **PageSpeed Insights API**, *obligatoire* : le score, le classement, la courbe, les quick wins, le labo page par page, et une copie des vrais visiteurs sans historique.
     - **Chrome UX Report API**, *recommandée* : les vrais visiteurs à la source (valeurs et part de visites bonnes, plus souvent disponibles à l'échelle du site) et **6 mois d'historique** dans Comparer. Facultative : sans elle, l'analyse tourne quand même.
-  - **Quatre étapes**, chacune avec un lien direct vers la bonne page de la console : 1. créer un projet Google Cloud ; 2. activer PageSpeed Insights API ; 3. activer Chrome UX Report API ; 4. créer une clé API et la coller dans le champ de l'étape.
+  - **Le guide, replié par défaut** : quatre étapes en liste simple (numéro, texte, lien « Ouvrir ↗ » souligné en pointillé, sans bouton ni fond), chacune vers la bonne page de la console : 1. créer un projet Google Cloud ; 2. activer PageSpeed Insights API *(obligatoire)* ; 3. activer Chrome UX Report API *(recommandée)* ; 4. créer une clé API, puis la coller dans le champ.
   - **Vérification automatique** dès que la clé est collée : une requête légère par API, qui ne mesure rien (Google répond à la porte : clé refusée, API non activée, ou entrée). Un voyant par API : *Activée*, *Non activée*, *Clé refusée*. Les étapes se cochent toutes seules.
-  - **Repli** : quand les deux API répondent, le guide se résume à « Clé valide · PageSpeed Insights ✓ · Chrome UX Report ✓ » et « Revoir les étapes ». S'il manque Chrome UX Report, l'étape 3 reste ouverte, avec ce qu'elle débloque.
+  - **L'action là où on la voit** : une API non activée porte son lien directement dans son voyant (« Chrome UX Report · non activée · Activer ↗ »), sans ouvrir le guide. Quand les deux répondent : « Clé valide · PageSpeed Insights · activée · Chrome UX Report · activée ».
   - Pas d'étape sur les restrictions de la clé *(choix du 21/10/2026)* ; seul le message de clé refusée les évoque, puisque c'est alors une cause possible.
   - La mention « gardée dans ce navigateur, envoyée à Google uniquement » reste sous le champ.
 
 | Cas | Comportement |
 |---|---|
-| Pas encore de clé | Les quatre étapes, aucune cochée, pas de voyant. |
+| Pas encore de clé | Le champ, et sous lui le guide replié ; pas de voyant. |
 | Clé mal formée | Pas d'appel à Google ; sous le champ : « Une clé Google commence par AIza et compte 39 caractères. » |
 | Vérification en cours | « Vérification de la clé… » ; le reste du formulaire reste utilisable. |
 | Clé modifiée | Nouvelle vérification après une courte pause de frappe ; la précédente est abandonnée. |
@@ -193,7 +193,7 @@ Puis « Voir d'où viennent les points › » vers l'onglet Score de Comparer. �
 | Quota du jour atteint | « Quota du jour atteint pour cette clé : réessayez demain. » Lancement bloqué. |
 | Hors ligne, Google injoignable, réponse inattendue | « Vérification impossible pour l'instant » et « Réessayer » ; le lancement reste possible, l'analyse dira si ça bloque. |
 | Retour depuis la console | En revenant sur l'onglet, une clé incomplète est revérifiée d'elle-même. |
-| Tout est bon | Le guide se replie en une ligne, avec « Revoir les étapes ». |
+| Tout est bon | « Clé valide » et les deux voyants ; le guide reste replié, ses étapes cochées si on l'ouvre. |
 | Réglages rouverts avec une clé enregistrée | Vérifiée une fois par visite ; le résultat est gardé tant que la clé ne change pas. |
 | Coût | Deux requêtes légères par vérification ; rien n'est mesuré. |
 - **L'estimation** et le lancement : « 14 mesures · 1 à 3 min » (la fourchette tient compte des pages mesurées trois fois), puis « Lancer l'analyse ».

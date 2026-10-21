@@ -19,7 +19,7 @@ See where your site stands on speed against your competitors, and which quick wi
 
 ### Measurement
 - PageSpeed Insights v5 and Chrome UX Report, straight from the browser with your free Google key; like-for-like comparison; ties under 2 points; the PageSpeed score recomputed with Lighthouse's scoring, to the rounding.
-- A four-step guide to the Google key, checked as soon as it's pasted (one light request per API, nothing measured).
+- Your Google API key, checked as soon as it's pasted (one light request per API, nothing measured), with a one-click link to switch on a missing API and a folded four-step guide to create a key.
 - "Measured by Google ⓘ": how the score is made, and why Lighthouse in your own Chrome scores higher.
 
 ### Product

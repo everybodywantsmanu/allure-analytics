@@ -150,13 +150,14 @@ function formInner() {
     </div>`;
 }
 
-// ── The Google key: four steps, checked as soon as it is pasted ──
+// ── The Google key: the field first, checked as soon as it is pasted ──
 // One key, two APIs: PageSpeed Insights (required) and Chrome UX Report
-// (recommended). Each step opens the right page of the Google Cloud console
-// and ticks itself once the check sees it done; when both APIs answer, the
-// guide folds into one line. The check (api.js, checkKey) measures nothing.
-// The card is drawn once; ticks, lights and messages change in place, so the
-// field keeps your cursor.
+// (recommended). People know what an API key is: the field leads, its lights
+// say which API answers, and an API that doesn't carries its own "Enable ↗".
+// The four-step guide to create a key is secondary: folded under the field,
+// small and grey; its steps tick themselves once the check sees them done.
+// The check (api.js, checkKey) measures nothing. The card is drawn once;
+// ticks, lights and messages change in place, so the field keeps your cursor.
 
 const CONSOLE = {
   project: 'https://console.cloud.google.com/projectcreate',
@@ -167,7 +168,7 @@ const CONSOLE = {
 const STEPS = [['project', 'open'], ['psi', 'enable', 'required'], ['crux', 'enable', 'recommended'], ['key', 'create']];
 // The last check, for the key it was run on (kept for the visit).
 const keyCheck = { key: '', state: 'idle', psi: null, crux: null };
-let checkTimer = 0, checkCtrl = null, stepsOpen = false;
+let checkTimer = 0, checkCtrl = null, guideOpen = false;
 
 // empty · format · checking · done
 function keyStatus() {
@@ -185,7 +186,6 @@ function keyView() {
     done: { project: accepted, psi: psi === 'ok', crux: crux === 'ok', key: accepted },
     // The step that needs you: an API to switch on.
     todo: psi === 'off' ? 'psi' : crux === 'off' && psi === 'ok' ? 'crux' : null,
-    folded: psi === 'ok' && crux === 'ok' && !stepsOpen,
   };
 }
 // A key the check proved unusable holds the launch, with its reason.
@@ -198,7 +198,9 @@ function keyBlock() {
   return null;
 }
 
-const light = (api, v) => `<span class="key-light${v === 'ok' ? ' is-on' : ''}"><i aria-hidden="true"></i>${esc(t(`key.api.${api}`))} · ${esc(t(v === 'ok' ? 'key.on' : 'key.off'))}</span>`;
+// One light per API; one that doesn't answer links straight to where it is switched on.
+const goLink = (href, label) => `<a class="key-go" href="${href}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`;
+const light = (api, v) => `<span class="key-light${v === 'ok' ? ' is-on' : ''}"><i aria-hidden="true"></i>${esc(t(`key.api.${api}`))} · ${esc(t(v === 'ok' ? 'key.on' : 'key.off'))}${v === 'off' ? ` · ${goLink(CONSOLE[api], t('key.go.enable'))}` : ''}</span>`;
 function keyStatusHtml(v) {
   const retry = `<button type="button" class="link" data-act="recheck">${esc(t('key.retry'))}</button>`;
   if (v.st === 'empty') return '';
@@ -208,31 +210,30 @@ function keyStatusHtml(v) {
   if (psi === 'refused' || crux === 'refused') return `<p>${esc(t('key.refused'))}</p>`;
   if (psi === 'quota') return `<p>${esc(t('key.quota'))}</p>`;
   if ([psi, crux].some(x => x === 'network' || x === 'unknown')) return `<p>${esc(t('key.unknown'))} ${retry}</p>`;
-  if (v.folded) return `<p class="key-lights"><b>${esc(t('key.valid'))}</b>${light('psi', psi)}${light('crux', crux)}<button type="button" class="link" data-act="steps">${esc(t('key.review'))}</button></p>`;
-  const fold = psi === 'ok' && crux === 'ok' ? `<button type="button" class="link" data-act="steps">${esc(t('key.fold'))}</button>` : '';
-  return `<p class="key-lights">${light('psi', psi)}${light('crux', crux)}${fold}</p>`;
+  const valid = psi === 'ok' && crux === 'ok' ? `<b>${esc(t('key.valid'))}</b>` : '';
+  return `<p class="key-lights">${valid}${light('psi', psi)}${light('crux', crux)}</p>`;
 }
 
 function keyCard() {
   const v = keyView();
   const steps = STEPS.map(([id, go, tag], i) => `<li class="key-step${v.done[id] ? ' is-done' : ''}${v.todo === id ? ' is-todo' : ''}" data-step="${id}">
-        <span class="key-tick" aria-hidden="true"><b>${i + 1}</b></span>
-        <div class="key-body">
-          <div class="key-head"><span class="key-title">${esc(t(`key.step.${id}`))}</span>${tag ? `<span class="key-tag key-tag--${tag}">${esc(t(`key.tag.${tag}`))}</span>` : ''}<a class="key-go" href="${CONSOLE[id]}" target="_blank" rel="noopener noreferrer">${esc(t(`key.go.${go}`))} ↗</a></div>
-          <p class="hint">${esc(t(`key.step.${id}.hint`))}</p>
-          ${id === 'key' ? `<label class="field key-field"><span class="sr-only">${esc(t('setup.key.label'))}</span>
-            <span class="key-wrap">${input('key', state.key, `type="${state.showKey ? 'text' : 'password'}" placeholder="AIza…" autocomplete="off" spellcheck="false"`)}
-            <button type="button" class="text-btn" data-act="show-key" aria-pressed="${state.showKey}">${esc(t(state.showKey ? 'setup.key.hide' : 'setup.key.show'))}</button></span>
-            ${errSlot('key')}</label>` : ''}
-          <span class="sr-only" data-step-sr>${v.done[id] ? esc(t('key.stepDone')) : ''}</span>
-        </div>
-      </li>`).join('');
-  return `<section class="card setup-card key-card reveal${v.folded ? ' is-folded' : ''}" style="--i:3" aria-labelledby="s-key" data-keycard>
+          <span class="key-num" aria-hidden="true">${i + 1}</span>
+          <span class="key-text">${esc(t(`key.step.${id}`))}${tag ? ` <span class="key-tag">${esc(t(`key.tag.${tag}`))}</span>` : ''}<span class="key-hint">${esc(t(`key.step.${id}.hint`))}</span><span class="sr-only" data-step-sr>${v.done[id] ? esc(t('key.stepDone')) : ''}</span></span>
+          ${goLink(CONSOLE[id], t(`key.go.${go}`))}
+        </li>`).join('');
+  return `<section class="card setup-card key-card reveal" style="--i:3" aria-labelledby="s-key" data-keycard>
       <h2 id="s-key">${esc(t('setup.key'))}</h2>
-      <p class="hint key-lead">${esc(t('key.lead'))}</p>
-      <ol class="key-steps">${steps}</ol>
+      <label class="field key-field"><span>${esc(t('setup.key.label'))}</span>
+        <span class="key-wrap">${input('key', state.key, `type="${state.showKey ? 'text' : 'password'}" placeholder="AIza…" autocomplete="off" spellcheck="false"`)}
+        <button type="button" class="text-btn" data-act="show-key" aria-pressed="${state.showKey}">${esc(t(state.showKey ? 'setup.key.hide' : 'setup.key.show'))}</button></span>
+        ${errSlot('key')}</label>
       <div class="key-status" data-key-status aria-live="polite">${keyStatusHtml(v)}</div>
       <p class="hint">${esc(t('setup.key.local'))}</p>
+      <details class="key-guide" data-key-guide${guideOpen ? ' open' : ''}>
+        <summary>${esc(t('key.guide'))}</summary>
+        <p class="key-lead">${esc(t('key.lead'))}</p>
+        <ol class="key-steps">${steps}</ol>
+      </details>
     </section>`;
 }
 
@@ -241,7 +242,6 @@ function refreshKey() {
   const card = form()?.querySelector('[data-keycard]');
   if (!card) return;
   const v = keyView();
-  card.classList.toggle('is-folded', v.folded);
   for (const li of card.querySelectorAll('[data-step]')) {
     const id = li.dataset.step;
     li.classList.toggle('is-done', v.done[id]);
@@ -528,10 +528,6 @@ function onFormClick(e) {
     refreshForm({ focus: '[data-act="show-key"]' });
   } else if (act === 'recheck') {
     scheduleCheck({ now: true, again: true });
-  } else if (act === 'steps') {
-    stepsOpen = !stepsOpen;
-    refreshKey();
-    form()?.querySelector('[data-act="steps"]')?.focus();
   }
 }
 
@@ -607,6 +603,8 @@ export function mountSetup(root) {
   el.addEventListener('input', onInput);
   el.addEventListener('click', onFormClick);
   el.addEventListener('submit', e => { e.preventDefault(); startRun(); });
+  // The guide stays as you left it when the form is redrawn.
+  el.addEventListener('toggle', e => { if (e.target.matches?.('[data-key-guide]')) guideOpen = e.target.open; }, true);
   focusLater(el);
   // A saved key is checked once per visit.
   bindReturn();

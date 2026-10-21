@@ -44,14 +44,14 @@ The app opens on the real product: a clean welcome until your first analysis. Th
 
 ## Your Google key
 
-To measure your own site (as a whole, or 1 to 8 key pages, against up to 8 competitors), click **Analyze my site** and follow the four steps of the *Google key* card. It is one free Google Cloud API key, with two APIs switched on:
+To measure your own site (as a whole, or 1 to 8 key pages, against up to 8 competitors), click **Analyze my site** and paste your API key in the *Google key* card. It is one free Google Cloud API key, with two APIs switched on:
 
 | API on the key | What it unlocks | Without it |
 |---|---|---|
 | **PageSpeed Insights API** (required) | The lab: score, standings, curve, quick wins, page-by-page lab in Compare, plus a copy of real-visitor data without history | No analysis (PageSpeed grants no quota without a key) |
 | **Chrome UX Report API** (recommended) | Real visitors from the source: current values, share of good visits, and 6 months of weekly history in Compare | The analysis still runs; real visitors come from PageSpeed, without history |
 
-Each step links to the right page of the Google Cloud console. As soon as the key is pasted, Allure checks it with one light request per API (nothing is measured) and ticks the steps itself; once both APIs answer, the card folds into one line.
+As soon as the key is pasted, Allure checks it with one light request per API (nothing is measured) and lights one status per API; an API that is not switched on links straight to its page in the Google Cloud console. No key yet? A four-step guide sits folded under the field, each step linking to the right page of the console.
 
 ## Privacy
 
@@ -67,7 +67,7 @@ Each step links to the right page of the Google Cloud console. As soon as the ke
 | Home: your position, curve and standings, quick-wins simulator, page bars | Page sheet: causes, history, page-to-page comparison |
 | Compare: score breakdown, real visitors, lab page by page with links to Google | Action sheet: the why, the pages, a ready-to-paste ticket |
 | Real analysis: PageSpeed + CrUX, light progress screen, a curve point per analysis, one-click re-run | Scheduled weekly runs (phase 2: shared backend) |
-| Settings: project, Google key with a live check, language, theme, delete my data | Printable A4 brief, CSV export |
+| Settings: project, Google API key with a live check (and a guide to create one), language, theme, delete my data | Printable A4 brief, CSV export |
 | Demo one click away, FR / EN, light / dark, phone to desktop, several tabs | |
 
 The full product decisions, with every edge case studied before building, are in [SPEC.md](SPEC.md) (in French). Changes are listed in [CHANGELOG.md](CHANGELOG.md).
