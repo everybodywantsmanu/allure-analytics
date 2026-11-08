@@ -12,7 +12,7 @@ import { storage } from '../storage.js';
 import { PSI_TARGET } from '../metrics.js';
 
 const AUTHOR_URL = 'https://fr.linkedin.com/in/emmanuel-nsuele';
-const REPO_URL = 'https://github.com/emmanuelnsuele-dot/allure-analytics';
+const REPO_URL = 'https://github.com/everybodywantsmanu/allure-analytics';
 
 export function segmented(action, options, current, label, extra = '') {
   return `<div class="segmented ${extra}" role="group" aria-label="${esc(label)}">${options.map(([value, text]) =>

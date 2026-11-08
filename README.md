@@ -6,7 +6,7 @@
 
 See where your site stands on speed against your competitors, and which quick wins move you up.
 
-**[Try the live demo →](https://emmanuelnsuele-dot.github.io/allure-analytics/#/demo)** &nbsp; ![Tests](https://github.com/emmanuelnsuele-dot/allure-analytics/actions/workflows/tests.yml/badge.svg) ![License: MIT](https://img.shields.io/badge/license-MIT-1D1D1F)
+**[Try the live demo →](https://everybodywantsmanu.github.io/allure-analytics/#/demo)** &nbsp; ![Tests](https://github.com/everybodywantsmanu/allure-analytics/actions/workflows/tests.yml/badge.svg) ![License: MIT](https://img.shields.io/badge/license-MIT-1D1D1F)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/home-dark.png">
@@ -40,7 +40,7 @@ Then open http://localhost:4173. ES modules don't load from `file://`, which is 
 
 The app opens on the real product: a clean welcome until your first analysis. The demo (a fictional shop and its competitors) is one click away, from the welcome screen or the *My site | Demo* switch in the top bar; a dark band across the top says you're in it, with *Leave the demo* to come back.
 
-**Share links:** `#/demo` opens the demo directly, `#/demo/compare/lcp` opens it on a given screen, and `?lang=en` or `?lang=fr` picks the language, e.g. `https://emmanuelnsuele-dot.github.io/allure-analytics/?lang=en#/demo`.
+**Share links:** `#/demo` opens the demo directly, `#/demo/compare/lcp` opens it on a given screen, and `?lang=en` or `?lang=fr` picks the language, e.g. `https://everybodywantsmanu.github.io/allure-analytics/?lang=en#/demo`.
 
 ## Your Google key
 
